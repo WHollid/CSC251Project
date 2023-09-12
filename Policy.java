@@ -6,7 +6,7 @@ public class Policy
       private String firstName;
       private String lastName;
       private int holderAge;
-      private boolean smokingStatus;
+      private String smokingStatus;
       private double holderHeight;
       private double holderWeight;
 
@@ -18,13 +18,13 @@ public class Policy
          firstName = "";
          lastName = "";
          holderAge = 0;
-         smokingStatus = false;
+         smokingStatus = "non-smoker";
          holderHeight = 0;
          holderWeight = 0;
       }
 
       //constructor with arguments that assigns variables to apporpriate fields
-      public Policy(int numPolicy, String names, String nameFirst, String nameLast, int age, boolean smokeStatus, double height, double weight)
+      public Policy(int numPolicy, String names, String nameFirst, String nameLast, int age, String smokeStatus, double height, double weight)
       {
          policyNum = numPolicy;
          name = names;
@@ -61,7 +61,7 @@ public class Policy
      {
         holderAge = age;
      }
-     public void setSmokingStatus(boolean smokeStatus)
+     public void setSmokingStatus(String smokeStatus)
      {
         smokingStatus = smokeStatus;
      }
@@ -92,7 +92,7 @@ public class Policy
       public int getAge(){
          return holderAge;
       }
-      public boolean getSmokingStatus(){
+      public String getSmokingStatus(){
          return smokingStatus;
       }
       public double getHeight(){
@@ -111,7 +111,7 @@ public class Policy
          if(holderAge > 50){
             policyFee += 75;
          }
-         if(smokingStatus == true){
+         if(smokingStatus == "smoker"){
             policyFee += 100;
          }
          if(BMI > 35){
