@@ -178,7 +178,7 @@ public class Policy
          if(holderAge > 50){
             policyFee += 75;
          }
-         if(smokingStatus == "smoker"){
+         if(smokingStatus.equals("smoker")){
             policyFee += 100;
          }
          if(BMI > 35){
