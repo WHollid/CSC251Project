@@ -113,7 +113,7 @@ public class Policy
         holderWeight = weight;
      }
       
-      /**Accessor methods returns the policy object's values
+      /**Accessor methods returns the policy object's values (get methods)
       @return the policy number
       */
       public int getPolicyNum()
