@@ -102,4 +102,11 @@ public class Policy
             policyFee += (BMI - 35)*20;
          }
          return policyFee;}
+         
+     public String toString()
+     {
+        String string = "Policy Number: " + policyNum + "\nPolicy name: " + name + "\nPolicy Price: $" + policyFee;
+        
+        return string;
+     }
 }
