@@ -1,6 +1,7 @@
 
 public class Policy
-{
+{  
+      static int numObjects = 0;
       private int policyNum;
       private String name;
       private String firstName;
@@ -31,6 +32,7 @@ public class Policy
          smokingStatus = "non-smoker";
          holderHeight = 0;
          holderWeight = 0;
+         numObjects ++;
       }
 
       /**
