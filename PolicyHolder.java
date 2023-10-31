@@ -4,7 +4,6 @@ Policy Holder Class that holds information related to the policy holder, such as
 */
 public class PolicyHolder
 {
-   private String name;
    private String firstName;
    private String lastName;
    private int holderAge;
@@ -21,7 +20,7 @@ public class PolicyHolder
       @param holderHeight the height of the holder
       @param holderWeight the weight of the holder
       */
-      public Policy()
+      public PolicyHolder()
       {
          firstName = "";
          lastName = "";
@@ -40,7 +39,7 @@ public class PolicyHolder
       @param holderHeight the height of the holder
       @param holderWeight the weight of the holder
       */
-      public Policy(String nameFirst, String nameLast, int age, String smokeStatus, double height, double weight)
+      public PolicyHolder(String nameFirst, String nameLast, int age, String smokeStatus, double height, double weight)
       {
          firstName = nameFirst;
          lastName = nameLast;
@@ -48,6 +47,20 @@ public class PolicyHolder
          smokingStatus = smokeStatus;
          holderHeight = height;
          holderWeight = weight;
+      }
+      
+      
+      /*The copy constructor creates a copy of the PolicyHolder class that it is passed as a parameter.
+      @param object2 - the object to copy
+      */
+      public PolicyHolder(PolicyHolder object2)
+      {
+         firstName = object2.firstName;
+         lastName = object2.lastName;
+         holderAge = object2.holderAge;
+         smokingStatus = object2.smokingStatus;
+         holderHeight = object2.holderHeight;
+         holderWeight = object2.holderWeight;
       }
       
      /**Setter methods
@@ -135,14 +148,12 @@ public class PolicyHolder
      @return the calculated BMI
      */
      public double getBMI(){
-        int BMI = (holderWeight * 703)/(holderHeight*holderHeight);
-        return BMI;
+        return (holderWeight * 703)/(holderHeight*holderHeight);
      }
 
      public String toString()
      {
-        String string = "Policyholder's First Name: " + firstName + "\nPolicyholder's Last Name: " + lastName + "\nPolicyholder's Age: " + holderAge + "\nPolicyholder's Smoking Status(smoker/non-smoker): " + smokingStatus + "\nPolicyholder's Height: " + holderHeight + "\nPolicyholder's Weight: " + holderWeight + "\nPolicyholder's BMI: " + BMI;
-        
+        return String.format("\nPolicyholder's First Name: " + firstName + "\nPolicyholder's Last Name: " + lastName + "\nPolicyholder's Age: " + holderAge + "\nPolicyholder's Smoking Status(smoker/non-smoker): " + smokingStatus + "\nPolicyholder's Height: " + holderHeight + "\nPolicyholder's Weight: " + holderWeight + "\nPolicyholder's BMI: " + String.format("%.2f", getBMI()));
      }
 
 }

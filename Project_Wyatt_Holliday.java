@@ -4,6 +4,9 @@ import java.io.*;
 
 public class Project_Wyatt_Holliday
 {
+  
+    
+   
    public static void main(String[] args)
       {
          
@@ -27,6 +30,8 @@ public class Project_Wyatt_Holliday
          String fileInput = "";
          int smokerNum = 0;
          int nonsmokerNum = 0;
+         
+         
       
          ArrayList<Policy> policies = new ArrayList<Policy>();
          
@@ -60,7 +65,8 @@ public class Project_Wyatt_Holliday
             { 
                inputFile.nextLine();
             }
-            Policy account = new Policy(numPolicy, names, nameFirst, nameLast, age, smokeStatus, height, weight);
+            PolicyHolder policy = new PolicyHolder(nameFirst, nameLast, age, smokeStatus, height, weight);
+            Policy account = new Policy(numPolicy, names, policy);
             policies.add(account);
          
          } 
@@ -69,21 +75,11 @@ public class Project_Wyatt_Holliday
                
          for(int i =0; i < policies.size(); i++)
          { 
-            System.out.println("Policy Number: " + policies.get(i).getPolicyNum());
-            System.out.println("Policy Name: " + policies.get(i).getName());
-            System.out.println("Policyholder's First Name: " + policies.get(i).getFirstName());
-            System.out.println("Policyholder's Last Name: " + policies.get(i).getLastName());
-            System.out.println("Policyholder's Age: " + policies.get(i).getAge());
-            System.out.println("Policyholder's Smoking Status(smoker/non-smoker): " + policies.get(i).getSmokingStatus());
-            System.out.println("Policyholder's Height: " + policies.get(i).getHeight());
-            System.out.println("Policyholder's Weight: " + policies.get(i).getWeight());
-            System.out.println("Policyholder's BMI: " + String.format("%.2f",policies.get(i).getBMI()));
-            System.out.println("Policy Price: $" + String.format("%.2f", policies.get(i).insuranceCalculator(policies.get(i).getBMI())));
-             
+            System.out.println(policies.get(i));
             System.out.println();
-            
-            
-         }   
+         }
+         System.out.println("There were " + Policy.numObjects + " Policy objects created.");
+         System.out.println();   
          System.out.println("The number of policies with a smoker is: " + smokerNum + "\nThe number of policies with a non-smoker is: " + nonsmokerNum); 
       }
       catch(IOException ex)      {

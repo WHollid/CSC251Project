@@ -2,14 +2,9 @@
 public class Policy
 {  
       static int numObjects = 0;
-      private int policyNum;
       private String name;
-      private String firstName;
-      private String lastName;
-      private int holderAge;
-      private String smokingStatus;
-      private double holderHeight;
-      private double holderWeight;
+      private int policyNum;
+      private PolicyHolder policy;
 
       /**
       no arg constructor that initializes variables
@@ -22,18 +17,15 @@ public class Policy
       @param holderHeight the height of the holder
       @param holderWeight the weight of the holder
       */
+      /**
       public Policy()
       {
          policyNum = 0;
          name = "";
-         firstName = "";
-         lastName = "";
-         holderAge = 0;
-         smokingStatus = "non-smoker";
-         holderHeight = 0;
-         holderWeight = 0;
-         numObjects ++;
+         policy = new PolicyHolder(policyHold);
+         
       }
+      */
 
       /**
       constructor with arguments that assigns variables to apporpriate fields
@@ -46,16 +38,12 @@ public class Policy
       @param holderHeight the height of the holder
       @param holderWeight the weight of the holder
       */
-      public Policy(int numPolicy, String names, String nameFirst, String nameLast, int age, String smokeStatus, double height, double weight)
+      public Policy(int numPolicy, String names, PolicyHolder policyhold)
       {
          policyNum = numPolicy;
          name = names;
-         firstName = nameFirst;
-         lastName = nameLast;
-         holderAge = age;
-         smokingStatus = smokeStatus;
-         holderHeight = height;
-         holderWeight = weight;
+         policy = new PolicyHolder(policyhold);
+         numObjects ++;
       }
       
      /**Setter methods
@@ -72,6 +60,13 @@ public class Policy
      {
         name = names;
      }
+     /**
+     @param
+     */
+     public void setPolicyHolder(PolicyHolder policyHold)
+     {
+        policy = new PolicyHolder(policyHold);
+     }
            
       /**Accessor methods returns the policy object's values (get methods)
       @return the policy number
@@ -87,6 +82,13 @@ public class Policy
          return name;
       }
       
+      /**
+      @return the PolicyHolder object
+      */
+      public PolicyHolder getPolicyHolder()
+      {
+         return new PolicyHolder(policy);
+      }
       
       /**
       Method to calculate the fee of the policy
@@ -94,21 +96,20 @@ public class Policy
       */
       public double insuranceCalculator(double BMI){
          double policyFee = 600;
-         if(holderAge > 50){
+         if(policy.getAge() > 50){
             policyFee += 75;
          }
-         if(smokingStatus.equals("smoker")){
+         if((policy.getSmokingStatus()).equals("smoker")){
             policyFee += 100;
          }
-         if(BMI > 35){
-            policyFee += (BMI - 35)*20;
+         if(policy.getBMI() > 35){
+            policyFee += (policy.getBMI() - 35)*20;
          }
          return policyFee;}
          
      public String toString()
      {
-        String string = "Policy Number: " + policyNum + "\nPolicy name: " + name + "\nPolicy Price: $" + policyFee;
-        
-        return string;
+        return String.format("Policy Number: " + policyNum + "\nPolicy name: " + name + policy.toString() +"\nPolicy Price: $" + String.format("%.2f", insuranceCalculator(policy.getBMI())));
+
      }
 }
